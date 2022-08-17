@@ -87,6 +87,10 @@ namespace Platformer.Mechanics
                     jump = true;
                     hasDoubleJumped = false;
                     stopJump = false;
+                    if (!IsGrounded)
+                    {
+                        doubleJump = true;
+                    }
                     break;
                 case JumpState.Jumping:
                     if (!IsGrounded)

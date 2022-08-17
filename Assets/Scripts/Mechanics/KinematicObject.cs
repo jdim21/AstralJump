@@ -17,7 +17,7 @@ namespace Platformer.Mechanics
         /// <summary>
         /// A custom gravity coefficient applied to this entity.
         /// </summary>
-        public float gravityModifier = 1f;
+        public float gravityModifier = 1.75f;
 
         /// <summary>
         /// A custom factor to increase acceleration
@@ -27,12 +27,12 @@ namespace Platformer.Mechanics
         /// <summary>
         /// A custom factor to increase jump speed
         /// </summary>
-        public float jumpVelocityModifier = 2f;
+        public float jumpVelocityModifier = 2.2f;
 
         /// <summary>
         /// A custom factor to increase run speed
         /// </summary>
-        public float runningModifier = 1.5f;
+        public float runningModifier = 3.2f;
 
         /// <summary>
         /// The current velocity of the entity.
