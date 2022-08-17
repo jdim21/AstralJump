@@ -35,6 +35,8 @@ namespace Platformer.Mechanics
         public bool controlEnabled = true;
 
         bool jump;
+        bool doubleJump;
+        bool hasDoubleJumped;
         Vector2 move;
         SpriteRenderer spriteRenderer;
         internal Animator animator;
@@ -58,6 +60,8 @@ namespace Platformer.Mechanics
                 move.x = Input.GetAxis("Horizontal");
                 if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
                     jumpState = JumpState.PrepareToJump;
+                //else if (jumpState == JumpState.InFlight && Input.GetButtonDown("Jump"))
+                //    jumpState = JumpState.DoubleJumping;
                 else if (Input.GetButtonUp("Jump"))
                 {
                     stopJump = true;
@@ -75,11 +79,13 @@ namespace Platformer.Mechanics
         void UpdateJumpState()
         {
             jump = false;
+            doubleJump = false;
             switch (jumpState)
             {
                 case JumpState.PrepareToJump:
                     jumpState = JumpState.Jumping;
                     jump = true;
+                    hasDoubleJumped = false;
                     stopJump = false;
                     break;
                 case JumpState.Jumping:
@@ -94,6 +100,12 @@ namespace Platformer.Mechanics
                     {
                         Schedule<PlayerLanded>().player = this;
                         jumpState = JumpState.Landed;
+                    } else if (!hasDoubleJumped && Input.GetButtonDown("Jump"))
+                    {
+                        Schedule<PlayerJumped>().player = this;
+                        jumpState = JumpState.Jumping;
+                        hasDoubleJumped = true;
+                        doubleJump = true;
                     }
                     break;
                 case JumpState.Landed:
@@ -108,6 +120,12 @@ namespace Platformer.Mechanics
             {
                 velocity.y = jumpTakeOffSpeed * model.jumpModifier;
                 jump = false;
+            }
+            else if (doubleJump)
+            {
+                velocity.y = jumpTakeOffSpeed * model.jumpModifier;
+                hasDoubleJumped = true;
+                doubleJump = false;
             }
             else if (stopJump)
             {

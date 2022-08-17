@@ -20,6 +20,21 @@ namespace Platformer.Mechanics
         public float gravityModifier = 1f;
 
         /// <summary>
+        /// A custom factor to increase acceleration
+        /// </summary>
+        public float velocityModifier = 2f;
+
+        /// <summary>
+        /// A custom factor to increase jump speed
+        /// </summary>
+        public float jumpVelocityModifier = 2f;
+
+        /// <summary>
+        /// A custom factor to increase run speed
+        /// </summary>
+        public float runningModifier = 1.5f;
+
+        /// <summary>
         /// The current velocity of the entity.
         /// </summary>
         public Vector2 velocity;
@@ -101,11 +116,7 @@ namespace Platformer.Mechanics
 
         protected virtual void FixedUpdate()
         {
-            //if already falling, fall faster than the jump speed, otherwise use normal gravity.
-            if (velocity.y < 0)
-                velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
-            else
-                velocity += Physics2D.gravity * Time.deltaTime;
+            velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
 
             velocity.x = targetVelocity.x;
 
@@ -117,9 +128,12 @@ namespace Platformer.Mechanics
 
             var move = moveAlongGround * deltaPosition.x;
 
+            // Apply horizontal modifier
+            move.x = move.x * runningModifier;
+
             PerformMovement(move, false);
 
-            move = Vector2.up * deltaPosition.y;
+            move = Vector2.up * deltaPosition.y * jumpVelocityModifier;
 
             PerformMovement(move, true);
 
