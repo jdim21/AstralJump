@@ -12,12 +12,12 @@ namespace Platformer.Mechanics
         /// <summary>
         /// The minimum normal (dot product) considered suitable for the entity sit on.
         /// </summary>
-        public float minGroundNormalY = .65f;
+        public float minGroundNormalY = .2f;
 
         /// <summary>
         /// A custom gravity coefficient applied to this entity.
         /// </summary>
-        public float gravityModifier = 1.75f;
+        public float gravityModifier = 1f;
 
         /// <summary>
         /// A custom factor to increase acceleration
@@ -27,12 +27,12 @@ namespace Platformer.Mechanics
         /// <summary>
         /// A custom factor to increase jump speed
         /// </summary>
-        public float jumpVelocityModifier = 2.2f;
+        public float jumpVelocityModifier = 1.75f;
 
         /// <summary>
         /// A custom factor to increase run speed
         /// </summary>
-        public float runningModifier = 3.2f;
+        public float runningModifier = 2.5f;
 
         /// <summary>
         /// The current velocity of the entity.
