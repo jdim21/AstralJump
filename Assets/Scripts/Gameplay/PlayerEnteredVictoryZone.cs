@@ -1,6 +1,9 @@
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 namespace Platformer.Gameplay
 {
@@ -15,10 +18,16 @@ namespace Platformer.Gameplay
 
         PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
-        public override void Execute()
+        public void CompleteLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        public override async void Execute()
         {
             model.player.animator.SetTrigger("victory");
             model.player.controlEnabled = false;
+            await Task.Delay(1250).ContinueWith(t => CompleteLevel(), TaskScheduler.FromCurrentSynchronizationContext());
         }
     }
 }
