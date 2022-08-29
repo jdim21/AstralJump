@@ -17144,7 +17144,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ouchAudio
       value: 
-      objectReference: {fileID: 8300000, guid: 6c05149e5a2fba64ba172e25a61074b7, type: 3}
+      objectReference: {fileID: 8300000, guid: 10af60327a409664e9598ecaf03047c2, type: 3}
     - target: {fileID: 114230831923080080, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}
       propertyPath: respawnAudio
