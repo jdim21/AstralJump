@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using Platformer.Model;
@@ -25,7 +26,7 @@ namespace Platformer.Mechanics
         /// <summary>
         /// Initial jump velocity at the start of a jump.
         /// </summary>
-        public float jumpTakeOffSpeed = 7;
+        public float jumpTakeOffSpeed = 5.75f;
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
@@ -43,6 +44,11 @@ namespace Platformer.Mechanics
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
+
+        void CompleteLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
 
         void Awake()
         {
@@ -95,7 +101,10 @@ namespace Platformer.Mechanics
                 case JumpState.Jumping:
                     if (!IsGrounded)
                     {
-                        Schedule<PlayerJumped>().player = this;
+                        if (!hasDoubleJumped)
+                        {
+                            Schedule<PlayerJumped>().player = this;
+                        }
                         jumpState = JumpState.InFlight;
                     }
                     break;

@@ -52,6 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.9
   gravityModifier: 1
+  velocityModifier: 2
+  jumpVelocityModifier: 1.75
+  runningModifier: 2.5
   velocity: {x: 0, y: 0}
   jumpAudio: {fileID: 8300000, guid: 67975c08d56ceb147bad38572d805aa8, type: 3}
   respawnAudio: {fileID: 8300000, guid: e18959d46b63f3c4c8cc020a433cf848, type: 3}
@@ -104,8 +107,8 @@ SpriteRenderer:
   m_SortingLayerID: 1907945055
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300020, guid: ba86c7b200abe499cb750833482830b3, type: 3}
-  m_Color: {r: 0.18039216, g: 0.8901961, b: 0.99215686, a: 1}
+  m_Sprite: {fileID: -614734269, guid: 4835bf07bb4147249a8e39e156c65264, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -281,8 +284,8 @@ BoxCollider2D:
   m_Offset: {x: -0.09, y: -0.14}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.26}
+    pivot: {x: 64, y: 32}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 1.28, y: 1.26}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
