@@ -17,9 +17,10 @@ namespace Platformer.Gameplay
 
         PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
-        public override async void Execute()
+        public override void Execute()
         {
             Debug.Log("victory");
+            AudioSource.PlayClipAtPoint(victoryZone.victoryZoneAudio, model.player.GetPosition());
             model.player.animator.SetTrigger("victory");
             model.player.controlEnabled = false;
             model.player.Invoke("CompleteLevel", 1.5f);

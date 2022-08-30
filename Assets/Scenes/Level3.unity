@@ -937,6 +937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b7b8893929d4d9094f6655d580fae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  victoryZoneAudio: {fileID: 8300000, guid: ed016afd67666c24fb177f3aae3dafd1, type: 3}
 --- !u!61 &480004329
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28740,7 +28741,7 @@ PrefabInstance:
         type: 3}
       propertyPath: respawnAudio
       value: 
-      objectReference: {fileID: 8300000, guid: e18959d46b63f3c4c8cc020a433cf848, type: 3}
+      objectReference: {fileID: 8300000, guid: 4c5fa1a58db5a864a8d4adbbcda96dd5, type: 3}
     - target: {fileID: 114230831923080080, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
         type: 3}
       propertyPath: runningModifier

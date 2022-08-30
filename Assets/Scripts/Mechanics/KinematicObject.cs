@@ -54,6 +54,10 @@ namespace Platformer.Mechanics
         protected const float minMoveDistance = 0.001f;
         protected const float shellRadius = 0.01f;
 
+        public Vector2 GetPosition()
+        {
+            return body.position;
+        }
 
         /// <summary>
         /// Bounce the object's vertical velocity.
