@@ -22,7 +22,7 @@ namespace Platformer.Gameplay
             Debug.Log("victory");
             model.player.animator.SetTrigger("victory");
             model.player.controlEnabled = false;
-            model.player.Invoke("CompleteLevel", 1.0f);
+            model.player.Invoke("CompleteLevel", 1.5f);
         }
     }
 }
