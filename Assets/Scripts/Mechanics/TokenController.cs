@@ -26,6 +26,7 @@ namespace Platformer.Mechanics
 
         void Awake()
         {
+            nextFrameTime = 0;
             //if tokens are empty, find all instances.
             //if tokens are not empty, they've been added at editor time.
             if (tokens.Length == 0)
@@ -63,7 +64,7 @@ namespace Platformer.Mechanics
                     }
                 }
                 //calculate the time of the next frame.
-                nextFrameTime += 1f / frameRate;
+                nextFrameTime = Time.time + (0.35f / frameRate);
             }
         }
 

@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tokenCollectAudio: {fileID: 8300000, guid: bf527d825758e5b4ca7b69f5a02d9a56, type: 3}
-  randomAnimationStartTime: 1
+  randomAnimationStartTime: 0
   idleAnimation:
   - {fileID: -863113920, guid: f87fd469a3014ea49849bbc24b6018df, type: 3}
   - {fileID: -1588377725, guid: f87fd469a3014ea49849bbc24b6018df, type: 3}
