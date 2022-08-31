@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
+
 
 namespace Platformer.UI
 {
@@ -10,6 +13,25 @@ namespace Platformer.UI
     public class MainUIController : MonoBehaviour
     {
         public GameObject[] panels;
+
+        bool showMainCanvas = false;
+
+        public void ToggleMainMenu(bool show)
+        {
+            if (show)
+            {
+                Time.timeScale = 0;
+                this.gameObject.SetActive(true);
+                foreach (var i in panels) i.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 1;
+                this.gameObject.SetActive(false);
+                foreach (var i in panels) i.SetActive(true);
+            }
+            this.showMainCanvas = show;
+        }
 
         public void SetActivePanel(int index)
         {
@@ -24,6 +46,7 @@ namespace Platformer.UI
         void OnEnable()
         {
             SetActivePanel(0);
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 }
