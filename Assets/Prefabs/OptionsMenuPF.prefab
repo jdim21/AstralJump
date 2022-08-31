@@ -53,7 +53,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff88ab6043070f4584f86b4b1b58e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 6bdbe06e000397b4094a3f2e88f9c63f, type: 2}
 --- !u!1 &6041105751563574871
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +177,7 @@ MonoBehaviour:
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 11400000, guid: 26e451f9948b9244c870061926ab0c29,
+  m_fontColorGradientPreset: {fileID: 11400000, guid: db6e2b065fb34d747aac5d9ab9cbdaab,
     type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -985,6 +984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6041105753075481554}
   - component: {fileID: 6041105753075481555}
+  - component: {fileID: 6975513426154816817}
   m_Layer: 1
   m_Name: Slider
   m_TagString: Untagged
@@ -1059,15 +1059,15 @@ MonoBehaviour:
   m_FillRect: {fileID: 6041105751974681374}
   m_HandleRect: {fileID: 6041105752798619583}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6041105752589609227}
-        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+      - m_Target: {fileID: 6975513426154816817}
+        m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
         m_MethodName: SetVolume
         m_Mode: 0
         m_Arguments:
@@ -1078,6 +1078,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6975513426154816817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6041105753075481553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e3ff84aef63e24bab58e36ff5509bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volSlider: {fileID: 6041105753075481555}
 --- !u!1 &6041105753412577480
 GameObject:
   m_ObjectHideFlags: 0
