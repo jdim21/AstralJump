@@ -17740,7 +17740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eabb3e8a9f87443da0ea2a1a2101fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameRate: 12
+  frameRate: 24
   tokens: []
 --- !u!114 &1754240610
 MonoBehaviour:
