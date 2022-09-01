@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - TutorialRequirement
+  - NotFoundMoon
+  - FoundMoon
+  - HUD Canvas
   layers:
   - Default
   - TransparentFX

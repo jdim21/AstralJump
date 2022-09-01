@@ -18,6 +18,7 @@ namespace Platformer.Mechanics
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
+        GameObject foundMoon;
 
         /// <summary>
         /// Max horizontal speed of the player.
@@ -44,6 +45,21 @@ namespace Platformer.Mechanics
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
+
+        public override void Start()
+        {
+            base.Start();
+            foundMoon = GameObject.Find("FoundMoon");
+            if (foundMoon != null)
+            {
+                foundMoon.SetActive(false);
+            }
+        }
+
+        public void FoundMoon()
+        {
+            foundMoon.SetActive(true);
+        }
 
         void CompleteLevel()
         {

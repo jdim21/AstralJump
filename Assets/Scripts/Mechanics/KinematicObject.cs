@@ -100,7 +100,7 @@ namespace Platformer.Mechanics
             body.isKinematic = false;
         }
 
-        protected virtual void Start()
+        public virtual void Start()
         {
             contactFilter.useTriggers = false;
             contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));

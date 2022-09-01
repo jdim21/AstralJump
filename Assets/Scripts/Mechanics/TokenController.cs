@@ -12,7 +12,7 @@ namespace Platformer.Mechanics
     public class TokenController : MonoBehaviour
     {
         [Tooltip("Frames per second at which tokens are animated.")]
-        public float frameRate = 12;
+        public float frameRate = 24;
         [Tooltip("Instances of tokens which are animated. If empty, token instances are found and loaded at runtime.")]
         public TokenInstance[] tokens;
 
@@ -64,7 +64,7 @@ namespace Platformer.Mechanics
                     }
                 }
                 //calculate the time of the next frame.
-                nextFrameTime = Time.time + (0.35f / frameRate);
+                nextFrameTime = Time.time + (1f / frameRate);
             }
         }
 

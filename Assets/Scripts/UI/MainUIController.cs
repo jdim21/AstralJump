@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
-
+using UnityEngine.SceneManagement;
 
 namespace Platformer.UI
 {
@@ -47,6 +46,16 @@ namespace Platformer.UI
         {
             SetActivePanel(0);
             EventSystem.current.SetSelectedGameObject(null);
+        }
+
+        public void RestartLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void QuitToMainMenu()
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }

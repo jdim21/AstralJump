@@ -18,6 +18,7 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
+            player.FoundMoon();
             AudioSource.PlayClipAtPoint(token.tokenCollectAudio, token.transform.position);
         }
     }
