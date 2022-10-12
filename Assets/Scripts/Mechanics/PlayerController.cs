@@ -6,6 +6,8 @@ using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using Platformer.Model;
 using Platformer.Core;
+using System.Diagnostics;
+using System.Threading;
 
 namespace Platformer.Mechanics
 {
@@ -16,6 +18,7 @@ namespace Platformer.Mechanics
     public class PlayerController : KinematicObject
     {
         public AudioClip jumpAudio;
+        public AudioClip doubleJumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
         GameObject foundMoon;
@@ -98,48 +101,58 @@ namespace Platformer.Mechanics
             base.Update();
         }
 
+        public bool IsDoubleJump()
+        {
+            return hasDoubleJumped || velocity.y < 0;
+        }
+
         void UpdateJumpState()
         {
             jump = false;
             doubleJump = false;
-            switch (jumpState)
+            if (Time.timeScale != 0)
             {
-                case JumpState.PrepareToJump:
-                    jumpState = JumpState.Jumping;
-                    jump = true;
-                    hasDoubleJumped = false;
-                    stopJump = false;
-                    if (!IsGrounded)
-                    {
-                        doubleJump = true;
-                    }
-                    break;
-                case JumpState.Jumping:
-                    if (!IsGrounded)
-                    {
-                        if (!hasDoubleJumped)
+                switch (jumpState)
+                {
+                    case JumpState.PrepareToJump:
+                        jumpState = JumpState.Jumping;
+                        jump = true;
+                        hasDoubleJumped = false;
+                        stopJump = false;
+                        if (!IsGrounded)
                         {
+                            UnityEngine.Debug.Log("doubleJump in PrepareToJump..");
+                            doubleJump = true;
                             Schedule<PlayerJumped>().player = this;
                         }
-                        jumpState = JumpState.InFlight;
-                    }
-                    break;
-                case JumpState.InFlight:
-                    if (IsGrounded)
-                    {
-                        Schedule<PlayerLanded>().player = this;
-                        jumpState = JumpState.Landed;
-                    } else if (!hasDoubleJumped && Input.GetButtonDown("Jump"))
-                    {
-                        Schedule<PlayerJumped>().player = this;
-                        jumpState = JumpState.Jumping;
-                        hasDoubleJumped = true;
-                        doubleJump = true;
-                    }
-                    break;
-                case JumpState.Landed:
-                    jumpState = JumpState.Grounded;
-                    break;
+                        break;
+                    case JumpState.Jumping:
+                        if (!IsGrounded)
+                        {
+                            if (!hasDoubleJumped)
+                            {
+                                Schedule<PlayerJumped>().player = this;
+                            }
+                            jumpState = JumpState.InFlight;
+                        }
+                        break;
+                    case JumpState.InFlight:
+                        if (IsGrounded)
+                        {
+                            Schedule<PlayerLanded>().player = this;
+                            jumpState = JumpState.Landed;
+                        } else if (!hasDoubleJumped && Input.GetButtonDown("Jump"))
+                        {
+                            Schedule<PlayerJumped>().player = this;
+                            jumpState = JumpState.Jumping;
+                            hasDoubleJumped = true;
+                            doubleJump = true;
+                        }
+                        break;
+                    case JumpState.Landed:
+                        jumpState = JumpState.Grounded;
+                        break;
+                }
             }
         }
 

@@ -57,7 +57,8 @@ MonoBehaviour:
   jumpVelocityModifier: 1.75
   runningModifier: 2.5
   velocity: {x: 0, y: 0}
-  jumpAudio: {fileID: 8300000, guid: 67975c08d56ceb147bad38572d805aa8, type: 3}
+  jumpAudio: {fileID: 8300000, guid: 5541a4090f0963140bec8d1b09453861, type: 3}
+  doubleJumpAudio: {fileID: 8300000, guid: b818b308be141734c839c63ab9d946e6, type: 3}
   respawnAudio: {fileID: 8300000, guid: e18959d46b63f3c4c8cc020a433cf848, type: 3}
   ouchAudio: {fileID: 8300000, guid: 6c05149e5a2fba64ba172e25a61074b7, type: 3}
   maxSpeed: 3
